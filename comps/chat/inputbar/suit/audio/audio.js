@@ -187,13 +187,13 @@ Component({
 			recorderManager.stop();
 		},
 
-		isGroupChat(){
-			return this.data.chatType == msgType.chatType.CHAT_ROOM;
-		},
+		// isGroupChat(){
+		// 	return this.data.chatType == msgType.chatType.CHAT_ROOM;
+		// },
 
-		getSendToParam(){
-			return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
-		},
+		// getSendToParam(){
+		// 	return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
+		// },
 
 		uploadRecord(tempFilePath, dur){
 			var str = WebIM.config.appkey.split("#");
@@ -220,13 +220,14 @@ Component({
 							length: Math.ceil(dur / 1000)
 						},
 						from: me.data.username.myName,
-						to: me.getSendToParam(),
+						to: me.data.username.groupId,
 						roomType: true,
 						chatType: me.data.chatType,
 					});
-					if(me.isGroupChat()){
-						msg.setGroup("groupchat");
-					}
+          msg.setGroup("groupchat");
+					// if(me.isGroupChat()){
+					// 	msg.setGroup("groupchat");
+					// }
 					msg.body.length = Math.ceil(dur / 1000);
 					WebIM.conn.send(msg.body);
           console.log(msg);

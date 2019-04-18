@@ -40,13 +40,13 @@ Component({
 			});
 		},
 
-		isGroupChat(){
-			return this.data.chatType == msgType.chatType.CHAT_ROOM;
-		},
+		// isGroupChat(){
+		// 	return this.data.chatType == msgType.chatType.CHAT_ROOM;
+		// },
 
-		getSendToParam(){
-			return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
-		},
+		// getSendToParam(){
+		// 	return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
+		// },
 
 		upLoadImage(res){
 			var me = this;
@@ -92,13 +92,14 @@ Component({
 									apiUrl: WebIM.config.apiURL,
 									body: file,
 									from: me.data.username.myName,
-									to: me.getSendToParam(),
+                  to: me.data.username.groupId,
 									roomType: true,
 									chatType: me.data.chatType,
 								});
-								if(me.data.chatType == msgType.chatType.CHAT_ROOM){
-									msg.setGroup("groupchat");
-								}
+								// if(me.data.chatType == msgType.chatType.CHAT_ROOM){
+								// 	msg.setGroup("groupchat");
+								// }
+                msg.setGroup("groupchat");
 								WebIM.conn.send(msg.body);
                 console.log(msg)
 								me.triggerEvent(

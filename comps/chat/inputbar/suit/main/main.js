@@ -26,13 +26,13 @@ Component({
 			this.triggerEvent("inputBlured", null, { bubbles: true });
 		},
 
-		isGroupChat(){
-			return this.data.chatType == msgType.chatType.CHAT_ROOM;
-		},
+		// isGroupChat(){
+		// 	return this.data.chatType == msgType.chatType.CHAT_ROOM;
+		// },
 
-		getSendToParam(){
-			return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
-		},
+		// getSendToParam(){
+		// 	return this.isGroupChat() ? this.data.username.groupId : this.data.username.groupId;
+		// },
 
 		// bindinput 不能打冒号！
 		bindMessage(e){
@@ -73,16 +73,17 @@ Component({
 			msg.set({
 				msg: this.data.userMessage,
 				from: this.data.username.myName,
-				to: this.getSendToParam(),
+        to: this.data.username.groupId,
 				roomType: true,
 				chatType: this.data.chatType,
 				success(id, serverMsgId){
 
 				}
 			});
-			if(this.data.chatType == msgType.chatType.CHAT_ROOM){
-				msg.setGroup("groupchat");
-			}
+      msg.setGroup("groupchat");
+			// if(this.data.chatType == msgType.chatType.CHAT_ROOM){
+			// 	msg.setGroup("groupchat");
+			// }
 			WebIM.conn.send(msg.body);
       console.log(msg);
 			this.triggerEvent(
