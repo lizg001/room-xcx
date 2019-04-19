@@ -112,7 +112,7 @@ App({
 			onOpened(message){
 				WebIM.conn.setPresence();
         console.log("登陆成功" + JSON.stringify(message));
-        wx.navigateTo({
+        wx.redirectTo({
           url: '../roomlist/roomlist?myName=' + WebIM.conn.context.userId,
         });
 			},
