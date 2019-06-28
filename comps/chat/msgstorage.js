@@ -155,7 +155,7 @@ msgStorage.saveMsg = function(sendableMsg, type, receiveMsg){
 				if (type == msgType.AUDIO || type == msgType.VIDEO) {
 					disp.fire('em.chat.audio.fileLoaded');
 				}
-				me.fire("newChatMsg", renderableMsg, type, curChatMsg);
+        me.fire("newChatMsg", renderableMsg, type, curChatMsg[curChatMsg.length - 1]);
 			}
 		});
 	}

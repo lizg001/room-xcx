@@ -14,11 +14,13 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.6.5",
 	"appid": "wxa8e467fa3798a0c9",
-	"projectname": "room-xcx",
+	"projectname": "room-xcx-old",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
